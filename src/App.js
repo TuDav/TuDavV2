@@ -1,13 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ResponsiveAppBar from './components/ResponsiveAppBar'
-
+import ElevationScroll from './components/ElevationScroll'
 import {publicRoutes} from './route/routes'
 
 
 function App() {
   return (
    <BrowserRouter>
-    <ResponsiveAppBar props={publicRoutes}/>
+   <ElevationScroll />
       <Routes>
         {
           publicRoutes.map((route, index) => {
