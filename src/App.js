@@ -1,11 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ElevationScroll from './components/ElevationScroll'
+import ScrollTop from './components/ScrollTop'
 import {publicRoutes} from './route/routes'
 
 
 function App() {
   return (
    <BrowserRouter>
+   <ScrollTop/>
    <ElevationScroll />
       <Routes>
         {

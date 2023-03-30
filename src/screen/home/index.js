@@ -1,24 +1,12 @@
 import * as React from 'react';
-import {useState} from 'react';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
+import {Container, Box, Grid, Typography, Button, Link, Divider} from '@mui/material'
 import image from '~/assets/images/slide_index_1.webp'
 import flashSaleImg from '~/assets/images/flsale.png'
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-
+import ListItems from '~/components/ListItems'
 const Home = () => {
-
-
-
-    const [selectedColor, setSelectedColor] = useState(null);
-
-    const handleOnClick = (e) => {
-        setSelectedColor(e.currentTarget.id)
-        }
     const items = [
         {
+            id: "1",
             itemName: "Áo thể theo Polo Z93",
             itemPrice: "95,000 đ",
             itemColors:[
@@ -34,89 +22,178 @@ const Home = () => {
                     name: "color3",
                     src: image
                 },
-            ]
-        }
+            ],
+            itemSizes: ["M", "L", "XL", "XXL"]
+        },
+        {
+            id: "2",
+            itemName: "Áo thể theo Polo Z93",
+            itemPrice: "95,000 đ",
+            itemColors:[
+                {   
+                    name: "color1",
+                    src: image
+                },
+                {
+                    name: "color2",
+                    src: image
+                },
+                {
+                    name: "color3",
+                    src: image
+                },
+            ],
+            itemSizes: ["M", "L", "XL", "XXL"]
+        },
+        {
+            id: "3",
+            itemName: "Áo thể theo Polo Z93",
+            itemPrice: "95,000 đ",
+            itemColors:[
+                {   
+                    name: "color1",
+                    src: image
+                },
+                {
+                    name: "color2",
+                    src: image
+                },
+                {
+                    name: "color3",
+                    src: image
+                },
+            ],
+            itemSizes: ["M", "L", "XL", "XXL"]
+        },
+        {
+            id: "4",
+            itemName: "Áo thể theo Polo Z93",
+            itemPrice: "95,000 đ",
+            itemColors:[
+                {   
+                    name: "color1",
+                    src: image
+                },
+                {
+                    name: "color2",
+                    src: image
+                },
+                {
+                    name: "color3",
+                    src: image
+                },
+            ],
+            itemSizes: ["M", "L", "XL", "XXL"]
+        },
     ]
-    console.log(selectedColor)
 
     return (
         <Container>
-            <Box 
-            component="img"
-            sx={{
-                height: "100%",
-                width: "100%",
-            }}
-            src={image}
-            />
-            <Box
-             component="img"
-             sx={{
-              height: 100,
-              width: 170,
-             }}
-             src={flashSaleImg}
-            />
-            <Box>
+                <Box 
+                component="img"
+                sx={{
+                    height: "100%",
+                    width: "100%",
+                }}
+                src={image}
+                />
+                <Box
+                component="img"
+                sx={{
+                height: 100,
+                width: 170,
+                }}
+                src={flashSaleImg}
+                />
+                <Box>
+
+                <ListItems props={items}/>
+
+                <Grid 
+                     container
+                     justifyContent="center"
+                     alignItems="center"
+                     sx={{
+                        marginTop: 5,
+                        marginBottom: 5,
+                    }}
+                     >
+                        <Button variant="outlined">Xem thêm</Button>
+                </Grid>
+                </Box>
+                <Box 
+                component="img"
+                sx={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "cover",
+                }}
+                src={image}
+                />
+                <Divider 
+                    sx={{
+                        marginTop: 5,
+                        marginBottom: 5,
+                        fontSize: "20px",
+                        '::after': {
+                            borderTop:"double"
+                        },
+                        '::before': {
+                            borderTop:"double"
+                        },
+                    }}
+                >BLOG</Divider>
+
                 <Grid container spacing={2}>
-                    <Grid item xs={3}>
-                      <Box
-                       component="img"
-                       sx={{
-                        height: "90%",
-                        width: "100%",
-                       }}
-                       src={image}
-                      />
-                      <Grid item xs={12}>
-                        <Typography variant='body1' align='center'>
-                            Áo thể thao Polo Z93
-                        </Typography>
-                        <Typography variant='body1' align='center'>
-                            95,000 đ
-                        </Typography>
-                        <Grid
-                            direction="row"
-                            justifyContent="space-around"
-                            alignItems="center"
-                            container
-                        >
-                            {
-                                items[0].itemColors.map((itemColor, index) => {
-                                    return (
-                                        <Button
-                                        key={index}
-                                        id={index}
-                                        variant="contained"
-                                        onClick={handleOnClick}
-                                        sx={{
-                                        backgroundColor: selectedColor === index.toString() ? "red" : "#ccc",
-                                        minWidth: 20,
-                                        width: 20,
-                                        borderRadius: "50%",
-                                    }}>
-                                    <Box
-                                        component="img"
-                                        sx={{
-                                            minWidth: 20,
-                                            height: 20,
-                                            width: 20,
-                                            borderRadius: "50%"
-                                           }}
-                                        src={itemColor.src}
-                                    />
-                                    </Button>
-                                    )
-                                }) 
-                            }
-                           
-                           
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                </Grid> 
-            </Box>
-            
+                    {
+                        items.map((item, index) => {
+                            return (
+                                <Grid item xs={3} key={index}>
+                                <Link 
+                                href="#"
+                                sx={{
+                                    color: "#000",
+                                    textDecoration:"none",
+                                    '&hover': {
+                                        textDecoration:"none",
+                                    }
+                                }}
+                                >
+                                <Box
+                                    component="img"
+                                    sx={{
+                                        height: "200px",
+                                        width: "100%",
+                                        objectFit:"cover"
+                                    }}
+                                    src={image}
+                                />
+                                <Typography 
+                                variant='h3'
+                                sx={{
+                                    fontSize: "15px",
+                                    fontWeight: "600"
+                                }}
+                                >
+                                    5 Sai Lầm 90% Nam Giới Đều Mắc Phải Khi Chọn Áo Khoác Chống Nắng
+                                </Typography>
+                                </Link>
+                                <Typography 
+                                variant='body2'
+                                sx={{
+                                    transform: 'skewX(-15deg)'
+                                }}
+                                >
+                                     21/06/2021 lúc 17:30PM</Typography>
+                                <Typography variant="caption" display="block" gutterBottom>
+                                    Áo khoác chống nắng là item không thể thiếu trong tủ đồ giúp các chàng vượt qua mùa nắng nóng. Thể nhưng, nếu không tránh 5 sai lầm bên dưới, chiếc áo sẽ phản tác dụng gây nên những khó...
+                                </Typography>
+                                </Grid> 
+                            )
+                        })
+                    }
+                </Grid>
+
         </Container>
     )
 }
